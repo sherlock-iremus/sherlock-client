@@ -22,8 +22,8 @@ const Tree = ({ uri }) => {
     <TreeView
       css={css`
         user-select: none;
-          overflow-y: auto;
-          overflow-x: auto;
+        overflow-y: auto;
+        overflow-x: auto;
       `}
       defaultCollapseIcon={<ExpandMore />}
       defaultExpandIcon={<ChevronRight />}

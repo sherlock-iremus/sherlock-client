@@ -3,12 +3,12 @@ import { css } from '@emotion/react'
 import { ArrowForwardIosSharp } from '@mui/icons-material'
 import { Box, Button, TextField, Typography } from '@mui/material'
 import { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { parse } from 'uuid'
 import { getTweetUserAndId } from './features/twitter/twitter'
 
 const Home = () => {
-  const history = useHistory()
+  const navigate = useNavigate()
   const [uri, setUri] = useState('https://twitter.com/tubbutec/status/1391311620786229248')
 
   return (
@@ -38,11 +38,11 @@ const Home = () => {
             if (uri) {
               if (uri.startsWith('https://twitter.com/')) {
                 const { userScreenName, statusId } = getTweetUserAndId(uri)
-                history.push(`/tweet/${userScreenName}/${statusId}`)
+                navigate(`/tweet/${userScreenName}/${statusId}`)
               } else if (uri.startsWith('http')) {
-                history.push('/describe/' + encodeURIComponent(uri))
+                navigate('/describe/' + encodeURIComponent(uri))
               } else {
-                parse(uri) && history.push('/id/' + uri)
+                parse(uri) && navigate('/id/' + uri)
               }
             }
           }}

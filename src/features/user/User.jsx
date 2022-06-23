@@ -3,10 +3,10 @@ import { css } from '@emotion/react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button, Paper, Typography } from '@mui/material'
 import React from 'react'
-import UserAvatar from './UserAvatar'
 import { useCookies } from 'react-cookie'
-import UserConfigEditor from './UserConfigEditor'
 import { userDisconnected } from './userSlice'
+import UserAvatar from './UserAvatar'
+import UserConfigEditor from './UserConfigEditor'
 
 const User = () => {
   const user = useSelector(state => state.user)

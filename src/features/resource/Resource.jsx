@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { experimentalStyled as styled, useTheme } from '@mui/material/styles'
 import { AppBar as MuiAppBar, Box, Button, Drawer, Toolbar, Typography } from '@mui/material'
@@ -64,16 +64,16 @@ const Offset = styled('div')(({ theme }) => theme.mixins.toolbar)
 
 export default function C({ resourceUri, view }) {
   const dispatch = useDispatch()
-  const history = useHistory()
+  const navigate = useNavigate()
   const theme = useTheme()
   const location = useLocation()
 
   const focusedResourceUri = useSelector(state => state.settings.focusedResourceUri) || resourceUri
   const bottomPanelResources = useSelector(state => state.tree.bottomPanelResources)
-  const [treeDisplayed, setTreeDisplayed] = useState(localStorage.getItem('treeDisplayed') == 'true')
+  const [treeDisplayed, setTreeDisplayed] = useState(localStorage.getItem('treeDisplayed') === 'true')
   const [selectedView, setSelectedView] = useState(view || VIEW_PO)
   function _setTreeDisplayed() {
-    const _ = !(localStorage.getItem('treeDisplayed') == 'true')
+    const _ = !(localStorage.getItem('treeDisplayed') === 'true')
     localStorage.setItem('treeDisplayed', _)
     setTreeDisplayed(_)
   }
@@ -120,7 +120,7 @@ export default function C({ resourceUri, view }) {
             </Button>
             &nbsp;
             <Button
-              onClick={() => history.push('/describe/' + encodeURIComponent(focusedResourceUri))}
+              onClick={() => navigate('/describe/' + encodeURIComponent(focusedResourceUri))}
               variant="outlined"
             >
               🪴
@@ -151,7 +151,7 @@ export default function C({ resourceUri, view }) {
             </Button>
             &nbsp;
             {viewers.map(v => (
-              <Button key={v.label} onClick={() => history.push(v.to)} variant="outlined">
+              <Button key={v.label} onClick={() => navigate(v.to)} variant="outlined">
                 {v.label}
               </Button>
             ))}

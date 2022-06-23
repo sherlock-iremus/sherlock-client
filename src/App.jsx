@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import Home from './Home'
 import About from './About'
@@ -6,34 +6,49 @@ import DescribeSherlockId from './features/navigation/SherlockId'
 import DescribeUri from './features/navigation/Uri'
 import DescribeTweet from './features/navigation/Tweet'
 import YasguiC from './features/yasgui/YasguiC'
-import Mei from './features/viewers/mei/Mei'
 import User from './features/user/User'
-import AuthenticatedRoute from './common/AuthenticatedRoute'
 import React from 'react'
-import theme from './SherlockMuiTheme'
 import TestComponent from './TestComponent'
-import { CssBaseline, ThemeProvider } from '@mui/material'
+import AuthenticatedRoute from './common/AuthenticatedRoute'
 
 const App = () => {
+  /* https://github.com/remix-run/react-router/issues/7285
+   * 
+   * Since optionnal parameters are not supported anymore in react-router v6, 
+   * we have to use two children routes routes.
+   */
   return (
-    <React.Fragment>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Router basename={'/' + process.env.REACT_APP_BASENAME}>
-          <Route path="/" component={Home} exact />
-          <Route path="/about" component={About} exact />
-          <Route path="/id/:id/:view?" component={DescribeSherlockId} exact />
-          <Route path="/describe/:uri/:view?" component={DescribeUri} exact />
-          <Route path="/tweet/:userScreenName/:statusId/:view?" component={DescribeTweet} exact />
-          <Route path="/yasgui" component={YasguiC} exact />
-          <Route path="/mei/:id" component={Mei} exact />
-          <Route path="/mei" component={Mei} exact />
-          <Route path="/test/:id" component={TestComponent} exact />
-          <AuthenticatedRoute path="/me" component={User} exact />
-        </Router>
-      </ThemeProvider>
-    </React.Fragment>
+    <BrowserRouter basename={'/' + process.env.REACT_APP_BASENAME}>
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/id/:id/">
+          <Route path=":view" element={<DescribeSherlockId />} />
+          <Route path="" element={<DescribeSherlockId />} />
+        </Route>
+        <Route path="/describe/:uri/">
+          <Route path=":view" element={<DescribeUri />} />
+          <Route path="" element={<DescribeUri />} />
+        </Route>
+        <Route path="/tweet/">
+          <Route path="" element={<DescribeTweet />} />
+          <Route path=":userScreenName/">
+            <Route path="" element={<DescribeTweet />} />
+            <Route path=":statusId/" >
+              <Route path=":view" element={<DescribeTweet />} />
+              <Route path="" element={<DescribeTweet />} />
+            </Route>
+          </Route>
+        </Route>
+        <Route path="/yasgui" element={<YasguiC />} />
+        <Route path="/test/:id" element={<TestComponent />} />
+        <Route path="/me" element={<AuthenticatedRoute><User /></AuthenticatedRoute>} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
 export default App
+
+//TODO https://reactrouter.com/docs/en/v6/upgrading/v5
+//TODO https://reactrouter.com/docs/en/v6/examples/auth

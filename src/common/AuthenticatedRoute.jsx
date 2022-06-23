@@ -1,16 +1,13 @@
-import { Route, Redirect } from 'react-router-dom'
+import React from 'react'
+import { Navigate } from 'react-router-dom'
 import useAuth from '../hooks/useAuth';
 
-const AuthenticatedRoute = ({component: Component, ...rest}) => {
+const AuthenticatedRoute = React.forwardRef(({ ...props}, ref) => {
   const isAuth = useAuth();
-  return (
-    <Route {...rest} render={(props) =>
-      (
-        isAuth
-          ? <Component {...props} />
-          : <Redirect to='/'/>
-      )}/>
-  )
-}
+
+  return isAuth 
+    ? props.children
+    : <Navigate to='/'/>
+});
 
 export default AuthenticatedRoute;

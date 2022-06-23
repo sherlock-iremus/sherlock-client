@@ -1,10 +1,9 @@
 export const authenticatedRequest = async (url, method, body) => {
   let request = {
     method: method,
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
-      //This bearer is useful in a development context, but is sent as cookie in production.
-      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBbnRvaW5lIExlYnJ1biIsIm5iZiI6MTY1NTk3NjI1OCwicm9sZXMiOltdLCJpc3MiOiJzaGVybG9jayIsIm9yY2lkIjoiMDAwMC0wMDAzLTIwNDgtOTM3OSIsImV4cCI6MTY1NTk3OTg1OCwiaWF0IjoxNjU1OTc2MjU4LCJ1dWlkIjoiNzBhYjIwNzYtMDIxOC00N2I4LTlkOGMtNzU1ZjM0NzFlMTQ1In0.0ESJ7SJxbkDLgihO7JWVJinY3_oqrPO_z_GCumzhaX4'
     },
     body: body,
     cache: 'no-cache'

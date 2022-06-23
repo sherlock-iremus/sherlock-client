@@ -60,7 +60,7 @@ const makeLink = ({ c1 = '', c2 = '', label = '', labelColor = 'white', onClick 
 //     }
 //   `
 
-export const renderBar = (theme, history, outgoing, resourceUri, setSelectedView, viewers, toggleIsTreeDisplayed) => {
+export const renderBar = (theme, navigate, outgoing, resourceUri, setSelectedView, viewers, toggleIsTreeDisplayed) => {
   return (
     <nav
       css={css`
@@ -84,7 +84,7 @@ export const renderBar = (theme, history, outgoing, resourceUri, setSelectedView
             c1: 'rgba(0, 255, 0, 1)',
             label: '🪴',
             labelColor: '',
-            onClick: e => history.push('/describe/' + encodeURIComponent(resourceUri)),
+            onClick: e => navigate('/describe/' + encodeURIComponent(resourceUri)),
             title: "réenraciner l'arbre sur la ressource courante",
           },
           {
@@ -112,7 +112,7 @@ export const renderBar = (theme, history, outgoing, resourceUri, setSelectedView
                 c1: _.color || theme.palette.colors.MI_YELLOW,
                 label: _.label,
                 labelColor: _.color || theme.palette.colors.MI_YELLOW,
-                onClick: e => (_.to ? history.push(_.to) : setSelectedView(_.view)),
+                onClick: e => (_.to ? navigate(_.to) : setSelectedView(_.view)),
               }
             })
           )
