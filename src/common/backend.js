@@ -1,63 +1,30 @@
-import {tokenSet} from "../features/user/userSlice";
-
-export const getTokenByCredentials = async credentials => {
-  return await fetch(process.env.REACT_APP_SHERLOCK_BACKEND_LOGIN_ENDPOINT, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json; charset=utf-8',
-    },
-    cache: 'no-cache',
-    body: JSON.stringify(credentials)})
-}
-
-export const authenticatedRequest = async (url, method, body, dispatch, token, refresh_token) => {
+export const authenticatedRequest = async (url, method, body) => {
   let request = {
     method: method,
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
-      'Authorization': 'Bearer ' + token
+      //This bearer is useful in a development context, but is sent as cookie in production.
+      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBbnRvaW5lIExlYnJ1biIsIm5iZiI6MTY1NTk3NjI1OCwicm9sZXMiOltdLCJpc3MiOiJzaGVybG9jayIsIm9yY2lkIjoiMDAwMC0wMDAzLTIwNDgtOTM3OSIsImV4cCI6MTY1NTk3OTg1OCwiaWF0IjoxNjU1OTc2MjU4LCJ1dWlkIjoiNzBhYjIwNzYtMDIxOC00N2I4LTlkOGMtNzU1ZjM0NzFlMTQ1In0.0ESJ7SJxbkDLgihO7JWVJinY3_oqrPO_z_GCumzhaX4'
     },
     body: body,
     cache: 'no-cache'
   }
-  let response = await fetch(process.env.REACT_APP_SHERLOCK_BACKEND_ENDPOINT + url, request);
-  if (response.status === 401) {
-    const updatedToken = await refreshToken(dispatch, refresh_token);
-    request = {
-      method: method,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + updatedToken
-      },
-      body: body,
-      cache: 'no-cache'
-    }
-    response = await fetch(process.env.REACT_APP_SHERLOCK_BACKEND_ENDPOINT + url, request);
-  }
-  return response.status === 200 ? response.json() : response;
+  return fetch(process.env.REACT_APP_SHERLOCK_BACKEND_ENDPOINT + url, request);
 }
 
-export const refreshToken = async (dispatch, refresh_token) => {
-  const response = await fetch(process.env.REACT_APP_SHERLOCK_BACKEND_REFRESH_TOKEN_ENDPOINT, {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json; charset=utf-8',
-    },
-    body: JSON.stringify({
-      refresh_token: refresh_token,
-      grant_type: "refresh_token"
-    })
-  });
-  const responseAsObject = await response.json()
-  dispatch(tokenSet(responseAsObject.access_token))
-  return responseAsObject.access_token;
+export const getUserDetails = async () => {
+  return authenticatedRequest("/sherlock/api/user/config", "GET");
 }
 
-export const postE13 = async (p140_assigned_attribute_to, p141_assigned, p177_assigned_property_type, p141_type, token, refresh_token, dispatch) => {
+export const sendUserDetails = async (emoji, color) => {
+  return authenticatedRequest("/sherlock/api/user/config", "PUT", JSON.stringify({emoji, color}));
+}
+
+export const postE13 = async (p140_assigned_attribute_to, p141_assigned, p177_assigned_property_type, p141_type) => {
   return await authenticatedRequest("/sherlock/api/e13", "POST", JSON.stringify({
     "p140_assigned_attribute_to": p140_assigned_attribute_to,
     "p177_assigned_property_type": p177_assigned_property_type,
     "p141_type": p141_type,
     "p141_assigned": p141_assigned,
-  }), dispatch, token, refresh_token);
+  }));
 }

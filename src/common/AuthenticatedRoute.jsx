@@ -1,14 +1,14 @@
 import { Route, Redirect } from 'react-router-dom'
-import {useSelector} from "react-redux";
+import useAuth from '../hooks/useAuth';
 
 const AuthenticatedRoute = ({component: Component, ...rest}) => {
-  const user = useSelector(state => state.user)
+  const isAuth = useAuth();
   return (
     <Route {...rest} render={(props) =>
       (
-        user && user.access_token
+        isAuth
           ? <Component {...props} />
-          : <Redirect to='/login'/>
+          : <Redirect to='/'/>
       )}/>
   )
 }
