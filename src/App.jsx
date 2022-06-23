@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { CssBaseline, ThemeProvider } from '@material-ui/core'
 
 import Home from './Home'
 import About from './About'
@@ -8,13 +7,12 @@ import DescribeUri from './features/navigation/Uri'
 import DescribeTweet from './features/navigation/Tweet'
 import YasguiC from './features/yasgui/YasguiC'
 import Mei from './features/viewers/mei/Mei'
-import { User } from './features/user/User'
-import { Login } from './features/user/Login'
+import User from './features/user/User'
 import AuthenticatedRoute from './common/AuthenticatedRoute'
-import UnauthenticatedRouteOnly from './common/UnauthenticatedRouteOnly'
 import React from 'react'
 import theme from './SherlockMuiTheme'
 import TestComponent from './TestComponent'
+import { CssBaseline, ThemeProvider } from '@mui/material'
 
 const App = () => {
   return (
@@ -32,7 +30,6 @@ const App = () => {
           <Route path="/mei" component={Mei} exact />
           <Route path="/test/:id" component={TestComponent} exact />
           <AuthenticatedRoute path="/me" component={User} exact />
-          <UnauthenticatedRouteOnly path="/login" component={Login} exact />
         </Router>
       </ThemeProvider>
     </React.Fragment>

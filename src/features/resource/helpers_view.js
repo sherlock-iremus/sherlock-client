@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { Link } from '@material-ui/core'
+import { Link } from '@mui/material'
 import React from 'react'
 import { DATA_IREMUS_FILES_BASE, DATA_IREMUS_ID_BASE, RDF_PREFIXES } from '../../common/rdf'
 import { codes as codesCss, header, HEADER_HEIGHT } from './Resource.css'

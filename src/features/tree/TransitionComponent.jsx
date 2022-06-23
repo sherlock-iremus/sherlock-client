@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Collapse from '@material-ui/core/Collapse'
+import { Collapse } from '@mui/material'
 import { useSpring, animated } from '@react-spring/web/dist/react-spring-web.cjs.js'
 
 function TransitionComponent(props) {

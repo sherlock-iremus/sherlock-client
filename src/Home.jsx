@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { Box, Button, TextField, Typography } from '@material-ui/core'
-import ArrowForwardIosSharpIcon from '@material-ui/icons/ArrowForwardIosSharp'
+import { ArrowForwardIosSharp } from '@mui/icons-material'
+import { Box, Button, TextField, Typography } from '@mui/material'
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { parse } from 'uuid'
@@ -47,7 +47,7 @@ const Home = () => {
             }
           }}
         >
-          <ArrowForwardIosSharpIcon />
+          <ArrowForwardIosSharp />
         </Button>
       </Box>
     </Box>

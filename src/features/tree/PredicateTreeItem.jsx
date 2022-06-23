@@ -1,7 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import SherlockTreeItemContent from './SherlockTreeItemContent'
-import TreeItem from '@material-ui/lab/TreeItem'
-import { ArrowLeft, ArrowRight, Visibility } from '@material-ui/icons'
 import { useDispatch, useSelector } from 'react-redux'
 
 import TransitionComponent from './TransitionComponent'
@@ -14,6 +12,8 @@ import IriTreeItem from './IriTreeItem'
 import LiteralTreeItem from './LiteralTreeItem'
 import { formatUri } from '../../common/rdf'
 import { maxResourceUnfoldable } from '../../common/utils'
+import { ArrowLeft, ArrowRight, Visibility } from '@mui/icons-material'
+import { TreeItem } from '@mui/lab'
 
 const PredicateTreeItem = ({ nodeId, path, predicate, relatedUri }) => {
   const dispatch = useDispatch()

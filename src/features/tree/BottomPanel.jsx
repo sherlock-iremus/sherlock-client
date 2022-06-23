@@ -4,12 +4,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectAllResources, selectResourceByUri } from './treeSlice'
 import { FixedSizeList } from 'react-window'
 import { useEffect, useState } from 'react'
-import { ListItem } from '@material-ui/core'
+import { ListItem, Box, TextField, Typography } from '@mui/material'
 import { focusedResourceUriSet } from '../settings/settingsSlice'
-import Box from '@material-ui/core/Box'
 // import PublicIcon from '@material-ui/icons/Public'
-import TextField from '@material-ui/core/TextField'
-import Typography from '@material-ui/core/Typography'
 
 const BottomPanel = ({ relatedResourceUri, predicateUri }) => {
   const dispatch = useDispatch()

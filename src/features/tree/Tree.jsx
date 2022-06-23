@@ -2,13 +2,12 @@
 import { css } from '@emotion/react'
 import { useEffect } from 'react'
 
-import TreeView from '@material-ui/lab/TreeView'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import { useDispatch } from 'react-redux'
 
 import { rootSet, getResourceIdentity } from './treeSlice'
 import IriTreeItem from './IriTreeItem'
+import { ChevronRight, ExpandMore } from '@mui/icons-material'
+import { TreeView } from '@mui/lab'
 
 const Tree = ({ uri }) => {
   const dispatch = useDispatch()
@@ -26,8 +25,8 @@ const Tree = ({ uri }) => {
           overflow-y: auto;
           overflow-x: auto;
       `}
-      defaultCollapseIcon={<ExpandMoreIcon />}
-      defaultExpandIcon={<ChevronRightIcon />}
+      defaultCollapseIcon={<ExpandMore />}
+      defaultExpandIcon={<ChevronRight />}
     >
       <IriTreeItem path={path} uri={uri} nodeId={path + uri + ','} />
     </TreeView>

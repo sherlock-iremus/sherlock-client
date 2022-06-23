@@ -1,12 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { DateRange, Label } from '@material-ui/icons'
-import { Box } from '@material-ui/core'
-import TreeItem from '@material-ui/lab/TreeItem'
+import { Box, Typography } from '@mui/material'
 import TransitionComponent from './TransitionComponent'
 
 import type from './datatype'
-import { Typography } from '@material-ui/core'
+import { DateRange, Label } from '@mui/icons-material'
+import { TreeItem } from '@mui/lab'
 
 const LiteralTreeItem = ({ path, literal }) => {
   return (

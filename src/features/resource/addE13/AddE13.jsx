@@ -1,17 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import {css} from '@emotion/react'
-import Button from "@material-ui/core/Button";
+import { Button, TextField, InputLabel, Select, MenuItem, FormControl, Box, Typography } from "@mui/material";
 import {postE13} from "../../../common/backend";
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import TextField from "@material-ui/core/TextField";
-import InputLabel from "@material-ui/core/InputLabel";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Box from "@material-ui/core/Box";
-import SyncAltIcon from '@material-ui/icons/SyncAlt';
-import Typography from "@material-ui/core/Typography";
+import { SyncAlt } from '@mui/icons-material';
 
 export const C = ({resourceUri}) => {
 
@@ -76,7 +69,7 @@ export const C = ({resourceUri}) => {
         width: 20%;
         align-items: center; `}>
         <Button onClick={() => exchangeP140AndP141()}>
-          <SyncAltIcon/>
+          <SyncAlt/>
         </Button>
       </Box>
       <TextField

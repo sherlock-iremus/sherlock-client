@@ -1,8 +1,8 @@
 // https://next.material-ui.com/customization/color/
 // https://next.material-ui.com/customization/palette/
 
-import { createTheme } from '@material-ui/core/styles'
-import cyan from '@material-ui/core/colors/cyan';
+import { cyan } from '@mui/material/colors'
+import { createTheme } from '@mui/material/styles'
 
 export default createTheme({
     components: {

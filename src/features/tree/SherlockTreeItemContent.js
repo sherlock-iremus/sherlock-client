@@ -1,10 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import clsx from 'clsx'
-import Typography from '@material-ui/core/Typography'
-import { ArrowLeft, ArrowRight } from '@material-ui/icons'
-import { useTreeItem } from '@material-ui/lab/TreeItem'
+import { Typography } from '@mui/material'
 import React from 'react'
+import { ArrowLeft, ArrowRight } from '@mui/icons-material'
+import { useTreeItem } from '@mui/lab'
 
 //TODO ou bien https://material-ui.com/api/typography/ ?
 function computeLabelIcon(LabelIcon) {
