@@ -32,8 +32,7 @@ export function separateOutgoingE13Results(bindings) {
 export function restructureSparqlResults(bindings) {
 
   const sortFn = (b1, b2) => {
-    const predicateCompare = b1.l_p.value.localeCompare(b2.l_p.value)
-    return predicateCompare
+    return b1.p && b2.p && b1?.p.value.localeCompare(b2?.p.value)
 
     // if (predicateCompare !== 0) return predicateCompare
     // sort bindings by p.value, object lang, <key>_label, key.value
@@ -73,9 +72,11 @@ export function restructureSparqlResults(bindings) {
   let res = {}
 
   for (const b of bindings) {
-    const l_p_l_r_key = b.l_p.value + b.l_r.value
-    if (!res[l_p_l_r_key]) res[l_p_l_r_key] = []
-    res[l_p_l_r_key][res[l_p_l_r_key].length] = b
+    if (b.p && b.r) {
+      const l_p_l_r_key = b?.p.value + b?.r.value
+      if (!res[l_p_l_r_key]) res[l_p_l_r_key] = []
+      res[l_p_l_r_key][res[l_p_l_r_key].length] = b  
+    }
   }
 
   return res

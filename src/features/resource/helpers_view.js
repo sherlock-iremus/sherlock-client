@@ -28,14 +28,14 @@ export function makeTable(bindings) {
         <tbody>
             {Object.values(bindings).map(bindings => {
                 return <tr key={i++}>
-                    <td>{formatBinding(bindings[0].l_p)}</td>
+                    <td>{formatBinding(bindings[0].p)}</td>
                     <td>
                         <div>
-                            <div>{formatBinding(bindings[0].l_r)}</div>
+                            <div>{formatBinding(bindings[0].r)}</div>
                             <div>{bindings[0].label ? formatBinding(bindings[0].label) : ''}</div>
                         </div>
                     </td>
-                    <td>{formatBinding(bindings[0].lr_g)}</td>
+                    <td>{formatBinding(bindings[0].g)}</td>
                 </tr>
             })}
         </tbody>

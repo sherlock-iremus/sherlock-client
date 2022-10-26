@@ -31,6 +31,7 @@
     "react-scripts": "5.0.0",
     "react-spring": "^9.4.4",
     "react-window": "^1.8.6",
+    "sherlock-sparql-queries": "https://github.com/sherlock-iremus/sherlock-sparql-queries#main",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"
   },
