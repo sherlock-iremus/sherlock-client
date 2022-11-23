@@ -36,10 +36,7 @@ const Home = () => {
           variant="outlined"
           onClick={() => {
             if (uri) {
-              if (uri.startsWith('https://twitter.com/')) {
-                const { userScreenName, statusId } = getTweetUserAndId(uri)
-                navigate(`/tweet/${userScreenName}/${statusId}`)
-              } else if (uri.startsWith('http')) {
+              if (uri.startsWith('http')) {
                 navigate('/describe/' + encodeURIComponent(uri))
               } else {
                 parse(uri) && navigate('/id/' + uri)
