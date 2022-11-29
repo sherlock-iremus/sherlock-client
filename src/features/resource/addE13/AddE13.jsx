@@ -86,7 +86,7 @@ export const C = ({resourceUri}) => {
     </Box>
     <Box display="flex">
       <FormControl fullWidth variant="filled" required css={css`margin-bottom: 3vh; border: none`}>
-        <InputLabel>p177_assigned_property_type</InputLabel>
+        <InputLabel>p177_assigned_property_of_type</InputLabel>
         <Select
           value={inputs.p177}
           onChange={(e) => setInputs(inputs => ({...inputs, p177: [e.target.value]}))}

@@ -19,10 +19,10 @@ export const sendUserDetails = async (emoji, color) => {
   return authenticatedRequest("/sherlock/api/user/config", "PUT", JSON.stringify({emoji, color}));
 }
 
-export const postE13 = async (p140_assigned_attribute_to, p141_assigned, p177_assigned_property_type, p141_type) => {
+export const postE13 = async (p140_assigned_attribute_to, p141_assigned, p177_assigned_property_of_type, p141_type) => {
   return await authenticatedRequest("/sherlock/api/e13", "POST", JSON.stringify({
     "p140_assigned_attribute_to": p140_assigned_attribute_to,
-    "p177_assigned_property_type": p177_assigned_property_type,
+    "p177_assigned_property_of_type": p177_assigned_property_of_type,
     "p141_type": p141_type,
     "p141_assigned": p141_assigned,
   }));

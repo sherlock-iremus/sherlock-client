@@ -5,7 +5,7 @@
 export const BIBO_BASE = 'http://purl.org/ontology/bibo/'
 export const LRMOO_BASE = 'http://www.cidoc-crm.org/lrmoo/'
 export const CRM_BASE = 'http://www.cidoc-crm.org/cidoc-crm/'
-export const CRMDIG_BASE = 'http://www.ics.forth.gr/isl/CRMdig/'
+export const CRMDIG_BASE = 'http://www.cidoc-crm.org/crmdig/'
 export const DC_BASE = 'http://purl.org/dc/elements/1.1/'
 export const DCTERMS_BASE = 'http://purl.org/dc/terms/'
 export const FOAF_BASE = 'http://xmlns.com/foaf/0.1/'
