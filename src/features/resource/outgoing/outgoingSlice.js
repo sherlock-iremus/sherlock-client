@@ -2,7 +2,6 @@ import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/too
 
 import { sparqlEndpoint } from '../../../common/sparql'
 import { restructureSparqlResults } from '../helpers_rdf'
-import query from './query'
 import { identity } from "sherlock-sparql-queries/src/queries/identity"
 
 const a = createEntityAdapter()
@@ -14,7 +13,7 @@ const initialState = a.getInitialState({
 export const fetchOutgoing = createAsyncThunk('outgoing/fetchOutgoing', async (uri, thunkAPI) => {
     if (thunkAPI.getState().outgoing.ids.includes(uri))
         return { id: uri, data: thunkAPI.getState().outgoing.entities[uri] }
-    const response = await sparqlEndpoint(identity(uri, false, false, null, "OUTGOING"))
+    const response = await sparqlEndpoint(identity(uri, true, false, null, "OUTGOING"))
     const data = restructureSparqlResults(response.results.bindings)
     return { id: uri, data}
 })
