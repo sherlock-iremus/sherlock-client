@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/sherlock/static/css/main.2afe59e1.css",
-    "main.js": "/sherlock/static/js/main.9ffd9ff6.js",
+    "main.js": "/sherlock/static/js/main.545c6097.js",
     "index.html": "/sherlock/index.html",
     "main.2afe59e1.css.map": "/sherlock/static/css/main.2afe59e1.css.map",
-    "main.9ffd9ff6.js.map": "/sherlock/static/js/main.9ffd9ff6.js.map"
+    "main.545c6097.js.map": "/sherlock/static/js/main.545c6097.js.map"
   },
   "entrypoints": [
     "static/css/main.2afe59e1.css",
-    "static/js/main.9ffd9ff6.js"
+    "static/js/main.545c6097.js"
   ]
 }
